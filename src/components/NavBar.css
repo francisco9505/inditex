@@ -1,0 +1,11 @@
+.nav-bar {
+  padding: 0.5rem 0;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.nav-bar__title {
+  color: #4b85d3 !important;
+  font-weight: 800;
+  font-size: 1.5rem;
+}

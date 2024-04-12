@@ -1,12 +1,43 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import { Post } from "../components/Post.jsx";
-import { mockData } from "../mockData.js";
+import { isAfter, subDays } from "date-fns";
 
 const Home = () => {
-  const [postList, setPostList] = useState(mockData);
-  const [filteredPostList, setFilteredPostList] = useState(mockData);
+  const [postList, setPostList] = useState([]);
+  const [filteredPostList, setFilteredPostList] = useState(postList);
   const [filterValue, setFilterValue] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api.allorigins.win/get?url=${encodeURIComponent(
+          "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
+        )}`
+      );
+      if (response.ok) {
+        console.error("Network response was not ok.");
+      }
+      const {
+        feed: { entry },
+      } = JSON.parse((await response.json()).contents);
+      setPostList(entry);
+      localStorage.setItem("postList", JSON.stringify(entry));
+      localStorage.setItem("postListRequestTime", `${new Date().getTime()}`);
+    };
+    if (
+      localStorage.getItem("postListRequestTime") &&
+      localStorage.getItem("postList") &&
+      isAfter(
+        new Date(+localStorage.getItem("postListRequestTime")),
+        subDays(new Date(), 1)
+      )
+    ) {
+      setPostList(JSON.parse(localStorage.getItem("postList")));
+      return;
+    }
+    fetchData().then();
+  }, []);
 
   useEffect(() => {
     if (!filterValue) {

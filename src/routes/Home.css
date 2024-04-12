@@ -23,4 +23,5 @@
     flex-direction: row;
     flex-wrap: wrap;
     overflow: auto;
+    gap: 1rem;
   }

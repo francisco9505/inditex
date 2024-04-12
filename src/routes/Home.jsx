@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Home.css";
 import { Post } from "../components/Post.jsx";
-import {mockData} from '../mock-data.js';
+import {mockData} from '../mockData.js';
 
 const Home = () => {
   const [podcastTotal, setPodcastTotal] = useState(0);

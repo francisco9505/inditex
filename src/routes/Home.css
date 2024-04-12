@@ -11,8 +11,25 @@
 .home__control {
   display: flex;
   justify-content: end;
-  align-items: stretch;
+  align-items: center;
   flex-direction: row;
+  gap: 1rem;
+}
+
+.home__filtered-list-length {
+  background: #4b85d3;
+  padding: 5px 19px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+}
+
+.home__filter-input {
+  padding: 5px 19px;
+  font-size: large;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #80808085;
 }
 
 .home__podcast-list-container {

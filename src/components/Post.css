@@ -5,6 +5,7 @@
     align-items: center;
     flex-direction: column;
     margin: 1.5rem;
+    max-height: 270px;
   }
 
   .post__details {

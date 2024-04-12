@@ -1,10 +1,24 @@
-import {useState} from "react"
+import { useState } from "react";
+import "./Home.css";
+import { Post } from "../components/Post.jsx";
+import {mockData} from '../mock-data.js';
 
+const Home = () => {
+  const [podcastTotal, setPodcastTotal] = useState(0);
+  const [postList, setPostList] = useState(mockData);
+  return (
+    <div className="home">
+      <div className="home__controls">
+        <span>{podcastTotal}</span>
+        <input type="text" />
+      </div>
+      <div className="home__podcast-list-container">
+        {postList.map((post) => (
+          <Post key={post.id.attributes["im:id"]} {...post} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-function Home (){
-    const [count, setCount] = useState(0)
-    return (<>
-    </>)
-}
-
-export default Home
+export default Home;

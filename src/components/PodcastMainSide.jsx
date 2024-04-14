@@ -4,7 +4,7 @@ import './PodcastMainSide.css'
 PodcastMainSide.propTypes = {podcast: PropTypes.object};
 
 export function PodcastMainSide({podcast}) {
-  return <div className="podcast__main-side">
+  return <div className="podcast__main-side podcast__card">
     <div className="podcast__main-side--img">
       <img alt="podcast-img" src={podcast["im:image"][2].label}/>
     </div>

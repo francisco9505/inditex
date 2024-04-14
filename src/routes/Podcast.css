@@ -1,7 +1,56 @@
 .podcast {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 1rem;
-    padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 3 rem;
+  padding: 1.5rem;
+}
+
+.podcast__episode-list {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.podcast__episode-list-count {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.podcast__card {
+  box-shadow: 0 13px 25px -7px rgba(0, 0, 0, 0.75);
+  padding: 15px;
+}
+
+.podcast__table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.podcast__table tr.gray {
+  background: #8080801a;
+}
+
+.podcast__table td,
+.podcast__table th {
+  padding: 0 10px;
+}
+
+.podcast__table .blue {
+  color: #4b85d3;
+  font-weight: 500;
+}
+
+.podcast__table tr {
+  height: 3rem;
+  text-align: left;
+  border-bottom: 1pt solid black;
+  cursor: pointer;
+}
+
+.podcast__table td {
+    cursor: pointer;
   }

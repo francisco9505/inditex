@@ -3,14 +3,14 @@ import "./Home.css";
 import { Post } from "../components/Post.jsx";
 import { isAfter, subDays } from "date-fns";
 
-const Home = ({setIsLoading}) => {
+const Home = ({ setIsLoading }) => {
   const [postList, setPostList] = useState([]);
   const [filteredPostList, setFilteredPostList] = useState(postList);
   const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       const response = await fetch(
         `https://api.allorigins.win/get?url=${encodeURIComponent(
           "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
@@ -24,7 +24,7 @@ const Home = ({setIsLoading}) => {
       } = JSON.parse((await response.json()).contents);
       setPostList(entry);
       localStorage.setItem("postList", JSON.stringify(entry));
-      localStorage.setItem("postListRequestTime", `${new Date().getTime()}`)
+      localStorage.setItem("postListRequestTime", `${new Date().getTime()}`);
       setIsLoading(false);
     };
     if (
@@ -35,7 +35,9 @@ const Home = ({setIsLoading}) => {
         subDays(new Date(), 1)
       )
     ) {
+      setIsLoading(true);
       setPostList(JSON.parse(localStorage.getItem("postList")));
+      setIsLoading(false);
       return;
     }
     fetchData().then();

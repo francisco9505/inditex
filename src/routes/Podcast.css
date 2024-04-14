@@ -1,0 +1,7 @@
+.podcast {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }

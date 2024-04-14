@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as PropTypes from "prop-types";
 import { PodcastMainSide } from "../components/PodcastMainSide.jsx";
+import { isAfter, subDays } from "date-fns";
 
 async function getPodcastList(podcastId) {
   const response = await fetch(
@@ -33,12 +34,30 @@ export function Podcast({ setIsLoading, postHashList }) {
   const [list, setList] = useState([]);
   const [podcast, setPodcast] = useState();
   useEffect(() => {
+    setIsLoading(true);
+    setPodcast(postHashList.get(podcastId));
     const fetchData = async () => {
-      setIsLoading(true);
-      setList(await getPodcastList(podcastId));
-      setPodcast(postHashList.get(podcastId));
+      const list = await getPodcastList(podcastId);
+      setList(list);
+      localStorage.setItem(`podcast_${podcastId}`, JSON.stringify(list));
+      localStorage.setItem(
+        `podcastRequestTime_${podcastId}`,
+        `${new Date().getTime()}`
+      );
       setIsLoading(false);
     };
+    if (
+      localStorage.getItem(`podcastRequestTime_${podcastId}`) &&
+      localStorage.getItem(`podcast_${podcastId}`) &&
+      isAfter(
+        new Date(+localStorage.getItem(`podcastRequestTime_${podcastId}`)),
+        subDays(new Date(), 1)
+      )
+    ) {
+      setList(JSON.parse(localStorage.getItem(`podcast_${podcastId}`)));
+      setIsLoading(false);
+      return;
+    }
     fetchData().then();
   }, []);
 
@@ -53,11 +72,14 @@ export function Podcast({ setIsLoading, postHashList }) {
             </div>
             <div className="podcast__card">
               <table className="podcast__table">
-                <tr>
-                  <th>Title</th>
-                  <th>Date</th>
-                  <th>Duration</th>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
                 {list.map(
                   (
                     { trackId, trackName, releaseDate, trackTimeMillis },
@@ -77,8 +99,10 @@ export function Podcast({ setIsLoading, postHashList }) {
                     </tr>
                   )
                 )}
+                </tbody>
               </table>
             </div>
+            x
           </div>
         </div>
       )}

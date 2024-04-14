@@ -1,0 +1,17 @@
+.podcast__episode {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.podcast__episode-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.podcast__player {
+  width: 100%;
+}

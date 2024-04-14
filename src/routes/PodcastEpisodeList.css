@@ -1,0 +1,28 @@
+.podcast__table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.podcast__table tr.gray {
+  background: #8080801a;
+}
+
+.podcast__table td,
+.podcast__table th {
+  padding: 0 10px;
+}
+
+.podcast__table .blue {
+  color: #4b85d3;
+  font-weight: 500;
+}
+
+.podcast__table tr {
+  height: 3rem;
+  text-align: left;
+  border-bottom: 1pt solid black;
+}
+
+.podcast__table td {
+  cursor: pointer;
+}

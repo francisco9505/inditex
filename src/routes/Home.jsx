@@ -3,11 +3,12 @@ import "./Home.css";
 import { Post } from "../components/Post.jsx";
 import * as PropTypes from "prop-types";
 
-export const Home = ({ postList }) => {
+export const Home = ({ postList, setList }) => {
   const [filteredPostList, setFilteredPostList] = useState(postList);
   const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
+    setList([])
     if (!filterValue) {
       setFilteredPostList(postList);
       return;
@@ -43,4 +44,4 @@ export const Home = ({ postList }) => {
   );
 };
 
-Home.propTypes = { postList: PropTypes.array };
+Home.propTypes = {postList: PropTypes.array, setList: PropTypes.func};

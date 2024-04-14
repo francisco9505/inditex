@@ -1,5 +1,5 @@
 import "./Podcast.css";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as PropTypes from "prop-types";
 import { PodcastMainSide } from "../components/PodcastMainSide.jsx";
@@ -18,20 +18,14 @@ async function getPodcastList(podcastId) {
   return results;
 }
 
-function millisToMinutesAndSeconds(millis) {
-  const minutes = Math.floor(millis / 60000);
-  const seconds = ((millis % 60000) / 1000).toFixed(0);
-  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-}
-
 Podcast.propTypes = {
   setIsLoading: PropTypes.func,
   postHashList: PropTypes.object,
+  setList: PropTypes.func,
 };
 
-export function Podcast({ setIsLoading, postHashList }) {
-  let { podcastId } = useParams();
-  const [list, setList] = useState([]);
+export function Podcast({ setIsLoading, postHashList , setList }) {
+  const { podcastId } = useParams();
   const [podcast, setPodcast] = useState();
   useEffect(() => {
     setIsLoading(true);
@@ -66,44 +60,7 @@ export function Podcast({ setIsLoading, postHashList }) {
       {podcast && (
         <div className="podcast">
           <PodcastMainSide podcast={podcast} />
-          <div className="podcast__episode-list">
-            <div className="podcast__episode-list-count podcast__card">
-              Episodes: {list.length}
-            </div>
-            <div className="podcast__card">
-              <table className="podcast__table">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Date</th>
-                    <th>Duration</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {list.map(
-                  (
-                    { trackId, trackName, releaseDate, trackTimeMillis },
-                    index
-                  ) => (
-                    <tr
-                      className={
-                        index % 2 === 0
-                          ? "podcast__episode-row gray"
-                          : "podcast__episode-row"
-                      }
-                      key={trackId}
-                    >
-                      <td className="blue">{trackName}</td>
-                      <td>{new Date(releaseDate).toLocaleDateString()}</td>
-                      <td>{millisToMinutesAndSeconds(trackTimeMillis)}</td>
-                    </tr>
-                  )
-                )}
-                </tbody>
-              </table>
-            </div>
-            x
-          </div>
+          <Outlet />
         </div>
       )}
     </>

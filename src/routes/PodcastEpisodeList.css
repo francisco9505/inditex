@@ -20,7 +20,7 @@
 .podcast__table tr {
   height: 3rem;
   text-align: left;
-  border-bottom: 1pt solid black;
+  border-bottom: 1px solid rgb(128 128 128 / 22%);
 }
 
 .podcast__table td {

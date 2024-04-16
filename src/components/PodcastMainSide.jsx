@@ -15,7 +15,7 @@ export function PodcastMainSide({ podcast }) {
   return (
     <div className="podcast__main-side podcast__card">
       <div className="podcast__main-side--img">
-        <img
+        <img className="podcast__pointer-cursor"
           onClick={openPodcast}
           alt="podcast-img"
           src={podcast["im:image"][2].label}
@@ -24,12 +24,12 @@ export function PodcastMainSide({ podcast }) {
       <hr className="podcast__main-side--division" />
       <div className="podcast__main-side--vertical-align">
         <span
-          className="podcast__main-side--podcast-name"
+          className="podcast__main-side--podcast-name podcast__pointer-cursor"
           onClick={openPodcast}
         >
           {podcast["im:name"].label}
         </span>
-        <span className="podcast__main-side--artist-name" onClick={openPodcast}>
+        <span className="podcast__main-side--artist-name podcast__pointer-cursor" onClick={openPodcast}>
           by {podcast["im:artist"].label}
         </span>
       </div>

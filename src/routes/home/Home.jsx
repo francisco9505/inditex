@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
-import { Post } from "../components/Post.jsx";
+import { PodcastCard } from "../../components/podcast-card/PodcastCard";
 import * as PropTypes from "prop-types";
 
 export const Home = ({ postList, setList }) => {
@@ -8,7 +8,7 @@ export const Home = ({ postList, setList }) => {
   const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
-    setList([])
+    setList([]);
     if (!filterValue) {
       setFilteredPostList(postList);
       return;
@@ -37,11 +37,11 @@ export const Home = ({ postList, setList }) => {
       </div>
       <div className="home__podcast-list-container">
         {filteredPostList.map((post) => (
-          <Post key={post.id.attributes["im:id"]} {...post} />
+          <PodcastCard key={post.id.attributes["im:id"]} {...post} />
         ))}
       </div>
     </div>
   );
 };
 
-Home.propTypes = {postList: PropTypes.array, setList: PropTypes.func};
+Home.propTypes = { postList: PropTypes.array, setList: PropTypes.func };

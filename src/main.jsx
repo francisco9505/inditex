@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { Home } from "./routes/Home.jsx";
+import { Home } from "./routes/home/Home.jsx";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavBar } from "./components/NavBar.jsx";
-import { Podcast } from "./routes/Podcast.jsx";
-import { PodcastEpisodeList } from "./routes/PodcastEpisodeList.jsx";
-import { Episode } from "./routes/Episode.jsx";
-import {useFetchCache} from "./hooks/UseFetchCache.jsx";
+import { NavBar } from "./components/navbar/NavBar.jsx";
+import { Podcast } from "./routes/podcast/Podcast.jsx";
+import { PodcastEpisodeList } from "./routes/podcastepisodelist/PodcastEpisodeList.jsx";
+import { Episode } from "./routes/episode/Episode.jsx";
+import { useFetchCache } from "./hooks/UseFetchCache.jsx";
 import { podcastListApi } from "./apis/podcastListApi.js";
 
 const Main = () => {

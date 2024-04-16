@@ -2,9 +2,9 @@ import "./Podcast.css";
 import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as PropTypes from "prop-types";
-import { PodcastMainSide } from "../components/PodcastMainSide.jsx";
-import { useFetchCache } from "../hooks/UseFetchCache.jsx";
-import { episodeListApi } from "../apis/episodeListApi.js";
+import { PodcastMainSide } from "../../components/post-cast-main-side/PodcastMainSide.jsx";
+import { useFetchCache } from "../../hooks/UseFetchCache.jsx";
+import { episodeListApi } from "../../apis/episodeListApi.js";
 
 Podcast.propTypes = {
   setIsLoading: PropTypes.func,
@@ -21,7 +21,7 @@ export function Podcast({ setIsLoading, postHashList, setList }) {
 
   useFetchCache(
     setList,
-    async () => (await episodeListApi.get(podcastId)),
+    async () => await episodeListApi.get(podcastId),
     `podcast_${podcastId}`,
     setIsLoading
   );

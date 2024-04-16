@@ -7,7 +7,7 @@ import { NavBar } from "./components/NavBar.jsx";
 import { Podcast } from "./routes/Podcast.jsx";
 import { PodcastEpisodeList } from "./routes/PodcastEpisodeList.jsx";
 import { Episode } from "./routes/Episode.jsx";
-import { useFetchCache } from "./hooks/useFetchCatche.jsx";
+import {useFetchCache} from "./hooks/UseFetchCache.jsx";
 import { podcastListApi } from "./apis/podcastListApi.js";
 
 const Main = () => {
@@ -59,7 +59,7 @@ const Main = () => {
               <Route path="" element={<PodcastEpisodeList list={list} />} />
               <Route
                 path="episode/:episodeId"
-                element={<Episode list={list} />}
+                element={<Episode list={list} setIsLoading={setIsLoading} />}
               />
             </Route>
           </Routes>

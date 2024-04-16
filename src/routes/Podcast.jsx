@@ -3,8 +3,8 @@ import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as PropTypes from "prop-types";
 import { PodcastMainSide } from "../components/PodcastMainSide.jsx";
-import { useFetchCache } from "./hooks/UseFetchCache.jsx";
-import { episodeListApi } from "./apis/episodeListApi.js";
+import { useFetchCache } from "../hooks/UseFetchCache.jsx";
+import { episodeListApi } from "../apis/episodeListApi.js";
 
 Podcast.propTypes = {
   setIsLoading: PropTypes.func,

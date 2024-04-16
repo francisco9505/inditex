@@ -11,7 +11,7 @@ export const Post = (props) => {
         </div>
         <div className="post__details">
           <span className="post__name">{props["im:name"].label}</span>
-          <span className="post__author">{props["im:artist"].label}</span>
+          <span className="post__author">Author: {props["im:artist"].label}</span>
         </div>
       </div>
     </>

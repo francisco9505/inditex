@@ -11,6 +11,10 @@ width: 35%;
   align-self: center;
 }
 
+.podcast__main-side--img img {
+  border-radius: 8px;
+}
+
 .podcast__main-side--vertical-align {
   display: flex;
   justify-content: space-between;

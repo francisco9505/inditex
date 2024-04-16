@@ -17,11 +17,11 @@
 }
 
 .home__filtered-list-length {
-  background: #4b85d3;
-  padding: 5px 19px;
-  border-radius: 5px;
+  background: #3277a8;
+  padding: .5px 5px;
+  border-radius: 10px;
   color: white;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .home__filter-input {

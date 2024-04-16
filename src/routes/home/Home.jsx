@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import { PodcastCard } from "../../components/podcast-card/PodcastCard";
 import * as PropTypes from "prop-types";
+import {useFilteredValue} from "../../hooks/UseFilteredValue.jsx";
 
 export const Home = ({ postList, setList }) => {
   const [filteredPostList, setFilteredPostList] = useState(postList);
@@ -9,18 +10,11 @@ export const Home = ({ postList, setList }) => {
 
   useEffect(() => {
     setList([]);
-    if (!filterValue) {
-      setFilteredPostList(postList);
-      return;
-    }
-    const filteredList = postList.filter((post) => {
-      const filter = filterValue.trim().toLowerCase();
-      const name = post["im:name"].label.toLowerCase();
-      const author = post["im:artist"].label.toLowerCase();
-      return name.includes(filter) || author.includes(filter);
-    });
-    setFilteredPostList(filteredList);
-  }, [postList, filterValue]);
+
+  }, [])
+
+  useFilteredValue(filterValue, setFilteredPostList, postList);
+
 
   return (
     <div className="home">
